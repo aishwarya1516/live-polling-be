@@ -1,0 +1,25 @@
+[
+ 
+            {
+                "candidate": "Joe",
+                "party":"A"
+            },
+            {
+                "candidate":"John",
+                "party":"B"
+            },
+            {
+                "candidate":"Kim",
+                "party":"C"
+            },
+            {
+                "candidate":"Zen",
+                "party":"D"
+            },
+            {
+                "candidate":"Kay",
+                "party":"E"
+            }
+        
+    
+]
