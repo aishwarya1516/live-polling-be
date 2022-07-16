@@ -8,12 +8,14 @@ const CONSTANTS = require('./constants/constants');
 
 mongo.connector();
 const app = express();
+const Socket = require('./socket/socket');
 const server = require('http').createServer(app);
 const io = require('socket.io')(server,  {
 	cors: {
-		origin: 'http://localhost:4200'
+		origin: process.env.allowedDomains
 	}
 })
+Socket.socketConnection(io)
 const { polling } = require('./app/vote/polling');
 const { pollingCount } = require('./socket/socketPolling');
 const morgan = require('morgan');
@@ -34,23 +36,7 @@ app.use(vote);
 app.use(nominee);
 
 
-io.on('connection', async(client) => {
-	console.log('connected successfully');
-	client.on('vote', async(data) => {
-		try {
-			const returnValue = await polling(data);
-			if(returnValue) {
-				const pollingData = await pollingCount();
-			console.log('inside vote !!!', pollingData);
-			io.emit('voteData', pollingData);
-			console.log('emiited');
-			}
-			
-		} catch(err) {
-			console.log('error',err);
-		}
-	})
-})
+
 
 server.listen(process.env.PORT,() => {
     console.log('Server is connceted to port ',process.env.PORT);
