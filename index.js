@@ -42,7 +42,7 @@ io.on('connection', async(client) => {
 			if(returnValue) {
 				const pollingData = await pollingCount();
 			console.log('inside vote !!!', pollingData);
-			client.emit('voteData', pollingData);
+			io.emit('voteData', pollingData);
 			console.log('emiited');
 			}
 			
