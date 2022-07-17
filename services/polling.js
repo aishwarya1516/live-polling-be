@@ -1,10 +1,10 @@
 const pollingSchema = require('../database/models/polling');
 
-const createPolling = (data) => {
+const createPolling = async(data) => {
 
     try {
         const pollingData = new pollingSchema(data);
-        pollingData.save((err,value) => {
+        await pollingData.save((err,value) => {
                     if(err){
                         return (err);
                     } else {
@@ -16,19 +16,19 @@ const createPolling = (data) => {
     }
 }
 
-const pollingCount = () => {
+const pollingCount = async() => {
 
     try {
-        const pollingCount =  pollingSchema.countDocuments({}).exec();
+        const pollingCount =  await pollingSchema.countDocuments({}).exec();
         return pollingCount;
     } catch(err) {
         return err;
     }
 }
 
-const aggregatePolling = () => {
+const aggregatePolling = async() => {
     try {
-        const pollinData =       pollingSchema.aggregate([
+        const pollinData =  await pollingSchema.aggregate([
                     {
                         "$group":{
                             "_id": "$candidateId",
