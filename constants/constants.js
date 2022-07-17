@@ -1,4 +1,4 @@
-exports = module.exports = {
+module.exports = {
     STATUS_CODE: {
         BAD_REQUEST: 400,
 		UNAUTHORIZED: 401,
@@ -15,6 +15,7 @@ exports = module.exports = {
         BAD_REQUEST: 'Required Data not found',
 		CONFLICT: 'Data already exists',
 		INTERNAL_SERVER_ERROR: 'Internal Server Error',
-        POLLING_CREATED: 'Polling created successfully'
+        POLLING_CREATED: 'Polling created successfully',
+		UNAUTHORIZED: 'UUID not found'
     }
 }

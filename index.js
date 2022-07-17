@@ -16,8 +16,6 @@ const io = require('socket.io')(server,  {
 	}
 })
 Socket.socketConnection(io)
-const { polling } = require('./app/vote/polling');
-const { pollingCount } = require('./socket/socketPolling');
 const morgan = require('morgan');
 const vote = require('./app/vote/index');
 const nominee = require('./app/nominee/index');

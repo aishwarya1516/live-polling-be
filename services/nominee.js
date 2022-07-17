@@ -1,12 +1,13 @@
 const nomineeSchema = require('../database/models/nominee');
 
-const getNominees = () => {
-    return new Promise((resolve,reject) => {
-        nomineeSchema.find()
-        .lean()
-        .then(data => resolve(data))
-        .catch(err => reject(err))
-    })
+const getNominees = async() => {
+    try {
+        const nomineeData = await nomineeSchema.find().lean().exec();
+        return nomineeData;
+    } catch(err) {
+        return err;
+    }
+
 }
 
 module.exports = {

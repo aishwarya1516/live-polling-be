@@ -7,7 +7,6 @@ exports.polling = async(data) => {
             return constants.STATUS_MESSAGE.BAD_REQUEST;
         }
         let pollingData = data;
-        pollingData.createdAt = new Date();
         const createdVote = await createPolling(pollingData);
         return createdVote;
 
